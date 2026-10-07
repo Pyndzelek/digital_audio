@@ -888,6 +888,120 @@ const test201415: Question[] = [
   },
 ];
 
+const sampleTest: Question[] = [
+  {
+    number: 1,
+    text: "The dynamic range of the ear is approximately:",
+    options: ["20 kHz", "44.1 kHz", "48 dB", "100 dB"],
+    correct: 3,
+    explanation:
+      "Dynamic range is a level ratio, so it is measured in dB (kHz is a frequency). From the hearing threshold to the threshold of pain the ear covers roughly 100–120 dB.",
+  },
+  {
+    number: 2,
+    text: "When using a floating-point quantizer (4+3 bits), which is the smallest sample?",
+    options: ["1010 101", "1010 000", "1100 101", "1100 111"],
+    correct: 3,
+    explanation:
+      "Official answer key: 1100 111. The 3-bit exponent sets the scaling, so the code with the largest exponent (111) together with the mantissa 1100 gives the smallest sample.",
+    note: "The correct option comes from the course platform's answer key; the explanation depends on the course's mantissa/exponent convention.",
+  },
+  {
+    number: 3,
+    text: "In a programmable delay, if the read pointer reaches the write pointer and we try to read again we will obtain:",
+    options: [
+      "The newest data written of the buffer",
+      "The oldest data written in the buffer",
+      "A buffer overflow error",
+      "A buffer underrun error",
+    ],
+    correct: 3,
+    explanation:
+      "If the reader catches up with the writer there is no new data left to read — the buffer has run empty, which is an underrun (an overflow is the writer overtaking the reader).",
+  },
+  {
+    number: 4,
+    text: "When applying oversampling we reduce the noise level extending it over frequency:",
+    options: [
+      "Only if it is a low frequency noise.",
+      "We can only reduce the quantization noise.",
+      "None of the above.",
+      "Only if it is white noise.",
+    ],
+    correct: 1,
+    explanation:
+      "Oversampling spreads the quantization noise power over a wider band (up to fs/2), so less of it falls in the audio band. Noise already present in the analog signal is sampled along with it and is not reduced.",
+  },
+  {
+    number: 5,
+    text: "The best way to eliminate the background noise of an analog audio signal is:",
+    options: [
+      "Using dither",
+      "Re-synchronizing the channels to eliminate the group delay",
+      "The background noise can't be eliminated",
+      "Using a band-pass filter from 100Hz to 20KHz",
+    ],
+    correct: 2,
+    explanation:
+      "Background noise overlaps the audio signal in frequency, so it cannot be separated and removed once it is part of the analog signal. Dither adds noise; filtering only removes out-of-band components.",
+  },
+  {
+    number: 6,
+    text: "The R/2R ladder DAC",
+    options: [
+      "Overrides the vast majority of the weighted resistors DAC problems.",
+      "Is a current control based DAC",
+      "Uses only 2 different values for the all the resistors: R and 2R.",
+      "All of the above.",
+    ],
+    correct: 3,
+    explanation:
+      "The R/2R ladder uses only two resistor values (easy to match precisely), which solves the main problem of the weighted-resistor DAC (a huge spread of values), and it works by splitting currents in binary-weighted steps.",
+  },
+  {
+    number: 7,
+    text: "The quantization error that produces anharmonics is known as:",
+    options: ["Droop effect", "Birdsinging", "Granulation noise", "Noise shaping"],
+    correct: 1,
+    explanation:
+      "With low-level signals the quantization error becomes correlated with the signal and produces inharmonic (anharmonic) components heard as 'birdsinging'.",
+  },
+  {
+    number: 8,
+    text: "Which processes are performed when reducing the bit depth?",
+    options: [
+      "Noise shaping",
+      "Digital dither",
+      "Dither",
+      "Both the first and the second are correct",
+    ],
+    correct: 3,
+    explanation:
+      "Requantizing to fewer bits is done in the digital domain: digital dither is added to decorrelate the error, and noise shaping moves the resulting noise to less audible frequencies.",
+  },
+  {
+    number: 9,
+    text: "The output of the sampling and hold circuit is:",
+    options: [
+      "The same input signal with impedance adaptation.",
+      "A digital version of the input.",
+      "An analog stepped version of the input.",
+      "None of the above.",
+    ],
+    correct: 2,
+    explanation:
+      "The S/H holds each sampled voltage constant until the next sample, giving a staircase signal that is still analog — the ADC digitizes it afterwards.",
+  },
+  {
+    number: 10,
+    text: "If the transfer function slope is different than 1, the ADC will have a/an ____ error.",
+    options: ["Differential non-linearity", "Offset", "Integral linearity", "Gain"],
+    correct: 3,
+    explanation:
+      "A wrong slope of the transfer function is a gain error; a shift of the whole curve is an offset error.",
+  },
+];
+
 export const exams: Exam[] = [
   {
     id: "final-2004",
@@ -920,6 +1034,12 @@ export const exams: Exam[] = [
     title: "Test A, Topics 1 & 2 – 2014/15",
     subtitle: "20 questions",
     questions: test201415,
+  },  {
+    id: "sample-test",
+    title: "Sample test",
+    subtitle: "10 questions",
+    rules: "Original rules: correct = +1 point; wrong = −0.33 points.",
+    questions: sampleTest,
   },
 ];
 
