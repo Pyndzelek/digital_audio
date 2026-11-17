@@ -1002,13 +1002,1008 @@ const sampleTest: Question[] = [
   },
 ];
 
+
+// ============================================================================
+// TOPICS 3, 4 & 5 EXAMS (DIGITAL AUDIO PROCESSING, COMPRESSION & 3D SOUND)
+// ============================================================================
+
+const topics345Model1: Question[] = [
+  {
+    number: 1,
+    text: "Latency in audio processing occurs when:",
+    options: [
+      "The signal is not processed properly.",
+      "There is a jitter error in the sampling clock.",
+      "The block size is too large.",
+      "The audio is processed in blocks.",
+    ],
+    correct: 3,
+    explanation:
+      "Latency is an inherent consequence of block processing with double buffering: the system must buffer N samples before computing the output (Latency = N_buf / Fs).",
+  },
+  {
+    number: 2,
+    text: "What is the purpose of updating audio parameters at a zero crossing?",
+    options: [
+      "To maximize the effect of dither.",
+      "To minimize distortion (clicks / zipper noise).",
+      "To maximize the SNR.",
+      "To synchronize the clock and minimize jitter.",
+    ],
+    correct: 1,
+    explanation:
+      "Modifying parameters (such as gain or filter coefficients) when the waveform value is zero avoids abrupt amplitude jumps, eliminating clicks and switching distortion.",
+  },
+  {
+    number: 3,
+    text: "By what other name is a band-stop (suppressor) filter known?",
+    options: [
+      "Notch filter.",
+      "Band-pass filter.",
+      "Low-pass filter.",
+      "High-pass filter.",
+    ],
+    correct: 0,
+    explanation:
+      "A suppressor filter with a very narrow rejection bandwidth designed to cut a specific interfering frequency (like 50 Hz mains hum) is called a Notch filter.",
+  },
+  {
+    number: 4,
+    text: "Which of the following equalizers employs a filter with a sliding cutoff frequency?",
+    options: [
+      "Loudness control.",
+      "Bass / Treble shelving.",
+      "Tone control.",
+      "Both of the above.",
+    ],
+    correct: 2,
+    explanation:
+      "Traditional simple tone controls (controles de tono) slide the corner cutoff frequency across the transition band as the control potentiometer is turned.",
+  },
+  {
+    number: 5,
+    text: "A parametric equalizer allows varying:",
+    options: [
+      "Gain and quality factor (Q).",
+      "Gain, quality factor (Q), and center frequency.",
+      "Gain and center frequency.",
+      "Quality factor (Q) and center frequency.",
+    ],
+    correct: 1,
+    explanation:
+      "A fully parametric equalizer provides complete continuous adjustment of all three fundamental parameters: Gain (G), Center Frequency (f0), and Quality Factor (Q = f0 / BW).",
+  },
+  {
+    number: 6,
+    text: "The attack time of a compressor is the time:",
+    options: [
+      "that elapses between when the signal exceeds the threshold and gain is reduced.",
+      "that elapses between when the signal exceeds the threshold and gain is increased.",
+      "that elapses between when the signal falls below the threshold and gain is increased.",
+      "that elapses between when the signal falls below the threshold and gain is reduced.",
+    ],
+    correct: 0,
+    explanation:
+      "Attack time (Ta) is the time required for the compressor's VCA to attenuate the gain after the input signal amplitude crosses the threshold.",
+  },
+  {
+    number: 7,
+    text: "The center frequency of the presence control is approximately:",
+    options: [
+      "500 Hz.",
+      "1000 Hz.",
+      "2000 Hz.",
+      "4000 Hz.",
+    ],
+    correct: 2,
+    explanation:
+      "Presence equalization operates in the 2 kHz to 3 kHz zone, the area of maximum human ear sensitivity, giving vocals and lead instruments extra clarity.",
+  },
+  {
+    number: 8,
+    text: "If a compressor is applied to a speech/vocal signal with a very short release time (Tr), it causes:",
+    options: [
+      "An effect similar to a backing vocal.",
+      "Granular noise.",
+      "Breathing noise (pumping).",
+      "None of the above.",
+    ],
+    correct: 2,
+    explanation:
+      "If release time is too short, the compressor rapidly boosts background room noise during quiet pauses between spoken words, creating an unnatural 'breathing' or 'pumping' noise.",
+  },
+  {
+    number: 9,
+    text: "Which of the following mixing console controls operates on a stereo signal?",
+    options: [
+      "Balance.",
+      "Fader.",
+      "Pan pot (Panorámica).",
+      "Insert point.",
+    ],
+    correct: 0,
+    explanation:
+      "Balance controls attenuate one channel relative to the other in an existing stereo pair (L/R). A Pan pot takes a mono signal and distributes it between two channels.",
+  },
+  {
+    number: 10,
+    text: "Which of the following psychoacoustic terms has an effective time window of approximately 5 to 20 ms?",
+    options: [
+      "A critical band.",
+      "The short window in window switching.",
+      "Post-masking.",
+      "Pre-masking.",
+    ],
+    correct: 3,
+    explanation:
+      "Pre-masking (backward masking) occurs over a very short temporal interval (~5 to 20 ms) before the onset of a loud transient. Post-masking is much longer (50 to 200 ms).",
+  },
+  {
+    number: 11,
+    text: "If a critical band has an SMR of 25 dB, how many bits should be used to quantize the signal so that noise remains inaudible?",
+    options: [
+      "3 bits.",
+      "4 bits.",
+      "5 bits.",
+      "6 bits.",
+    ],
+    correct: 2,
+    explanation:
+      "To make quantization noise inaudible, SNR must exceed SMR (SNR approx 6.02 * N > SMR). For N = 4: 24 dB < 25 dB (fails). For N = 5: 30 dB > 25 dB (NMR < 0 dB, noise is completely masked).",
+  },
+  {
+    number: 12,
+    text: "Besides window switching, what else can reduce pre-echo artifacts in an MPEG audio encoder?",
+    options: [
+      "Increasing the bit-rate.",
+      "Perceptual coding.",
+      "Post-masking.",
+      "Only window switching can reduce pre-echo.",
+    ],
+    correct: 0,
+    explanation:
+      "Increasing the bit-rate allows allocating more bits to the transient frame, lowering the overall quantization noise floor below the hearing threshold.",
+  },
+  {
+    number: 13,
+    text: "How many band-pass filters are used in the frequency filter bank of the ATRAC codec?",
+    options: [
+      "3 filters.",
+      "10 filters.",
+      "32 filters.",
+      "ATRAC uses transform coding, not a filter bank.",
+    ],
+    correct: 0,
+    explanation:
+      "Sony ATRAC (MiniDisc) uses a hybrid filter bank that first splits the 0–22 kHz spectrum into 3 frequency bands (0–5.5 kHz, 5.5–11 kHz, 11–22 kHz) before applying MDCT.",
+  },
+  {
+    number: 14,
+    text: "The SDDS (Sony Dynamic Digital Sound) cinema sound format internally uses several encoder modules of:",
+    options: [
+      "Dolby AC-2.",
+      "Dolby AC-3.",
+      "Sony ATRAC.",
+      "THX.",
+    ],
+    correct: 2,
+    explanation:
+      "SDDS is an 8-channel optical digital cinema system developed by Sony that uses multiple ATRAC compression modules in parallel.",
+  },
+  {
+    number: 15,
+    text: "For spatial sound localization at high frequencies, the human auditory system uses:",
+    options: [
+      "ADPCM.",
+      "Delta Modulation.",
+      "Sigma-Delta.",
+      "None of the above.",
+    ],
+    correct: 3,
+    explanation:
+      "Under Rayleigh's Duplex Theory, high-frequency localization relies on Interaural Level Differences (ILD) caused by head shadow. ADPCM, Delta, and Sigma-Delta are digital modulation techniques, not spatial hearing mechanisms!",
+  },
+  {
+    number: 16,
+    text: "Stereophonic systems rely primarily on _____ to generate a phantom acoustic image between two speakers:",
+    options: [
+      "ILD (Interaural Level Differences).",
+      "ITD (Interaural Time Differences).",
+      "Both ILD and ITD equally.",
+      "HRTFs.",
+    ],
+    correct: 0,
+    explanation:
+      "Standard stereo mixing uses amplitude panning (gain differences between L and R channels) to produce Interaural Level Differences (ILD) at the listener position, governed by the Tangent Law.",
+  },
+  {
+    number: 17,
+    text: "What is the maximum recommended angular aperture between stereo speakers to generate a stable phantom image?",
+    options: [
+      "30º.",
+      "45º.",
+      "60º.",
+      "90º.",
+    ],
+    correct: 2,
+    explanation:
+      "ITU-R BS.775 recommends an angle of 60º (+-30º from center). If the angle between speakers exceeds 60º, the phantom center collapses into the individual speakers ('hole-in-the-middle').",
+  },
+  {
+    number: 18,
+    text: "Which of the following acoustic cues allows a listener to perceive the distance (depth) of a sound source?",
+    options: [
+      "Reverberation (direct-to-reverberant sound ratio).",
+      "Motion Parallax.",
+      "Doppler effect.",
+      "The first two are correct (Reverberation and Motion Parallax).",
+    ],
+    correct: 3,
+    explanation:
+      "Distance perception is primarily determined by the ratio of direct-to-reverberant sound energy and dynamic changes in angle due to head movement (motion parallax).",
+  },
+  {
+    number: 19,
+    text: "Spatial sound localization in highly reverberant rooms is possible thanks to:",
+    options: [
+      "Reverberation.",
+      "Motion Parallax.",
+      "The Doppler effect.",
+      "The Haas effect (Precedence effect).",
+    ],
+    correct: 3,
+    explanation:
+      "The Haas (precedence) effect suppresses the spatial perception of wall reflections arriving within 5 to 40 ms, allowing the brain to localize the source solely from the first-arriving direct wavefront.",
+  },
+  {
+    number: 20,
+    text: "Which spatial audio system strictly requires a specific geometric loudspeaker layout (e.g. regular sphere/circle) to function?",
+    options: [
+      "Ambisonics.",
+      "Binaural system.",
+      "Wave Field Synthesis.",
+      "None of the above.",
+    ],
+    correct: 0,
+    explanation:
+      "Ambisonics decomposes the 3D soundfield into spherical harmonics (B-format W, X, Y, Z) and strictly requires regular, symmetrical geometric loudspeaker layouts for proper matrix decoding.",
+  },
+];
+
+const topics345Model2: Question[] = [
+  {
+    number: 1,
+    text: "The block processing in the frequency domain introduces:",
+    options: [
+      "Aliasing.",
+      "Leakage.",
+      "Latency.",
+      "Both of the above (Aliasing and Leakage).",
+    ],
+    correct: 3,
+    explanation:
+      "Block processing in the frequency domain (via DFT/FFT) introduces both spectral leakage (from finite window truncation) and time aliasing (from circular convolution if zero-padding is insufficient).",
+    note: "All block processing introduces latency, but frequency-domain block transforms specifically introduce aliasing and leakage (answers a & b).",
+  },
+  {
+    number: 2,
+    text: "Updating parameters at zero crossings achieves:",
+    options: [
+      "Reducing quantization noise.",
+      "Improving the dynamic range of the signal.",
+      "Reducing signal distortion (zipper noise / clicks).",
+      "Both b and c.",
+    ],
+    correct: 2,
+    explanation:
+      "Parameter changes at zero-crossing points eliminate voltage steps, avoiding sudden transients and audible clicks.",
+  },
+  {
+    number: 3,
+    text: "A loudness equalizer:",
+    options: [
+      "Is a compressor used to equalize signal volume.",
+      "Is an expander used to equalize signal volume.",
+      "Applies volume-dependent frequency equalization.",
+      "None of the above.",
+    ],
+    correct: 2,
+    explanation:
+      "Loudness compensation applies frequency curve contouring based on Fletcher-Munson equal-loudness contours, boosting bass/treble more at lower volumes.",
+  },
+  {
+    number: 4,
+    text: "Which control employs a sliding band-rejection (cutoff) filter?",
+    options: [
+      "Loudness.",
+      "Bass / Treble.",
+      "Midrange.",
+      "Tone control.",
+    ],
+    correct: 3,
+    explanation:
+      "Traditional analog tone control circuits slide the filter cutoff/notch frequency across the spectrum as the control is rotated.",
+  },
+  {
+    number: 5,
+    text: "What parameter does a semi-parametric equalizer NOT modify?",
+    options: [
+      "The quality factor (Q).",
+      "The gain.",
+      "The center frequency.",
+      "None of the above.",
+    ],
+    correct: 0,
+    explanation:
+      "A semi-parametric (quasi-parametric) EQ allows adjusting gain and center frequency, but has a fixed, non-adjustable Q factor.",
+  },
+  {
+    number: 6,
+    text: "A noise gate can be implemented using:",
+    options: [
+      "A compressor.",
+      "An expander.",
+      "A noise gate with a higher cutoff frequency.",
+      "None of the above.",
+    ],
+    correct: 1,
+    explanation:
+      "A noise gate is an extreme downward expander (with an expansion ratio of 1:infinity below the threshold) that mutes background noise during pauses.",
+  },
+  {
+    number: 7,
+    text: "In a live sound reinforcement event, which type of mixing console would you use?",
+    options: [
+      "Split console.",
+      "In-line console.",
+      "Either of the two.",
+      "None of the above.",
+    ],
+    correct: 0,
+    explanation:
+      "Split consoles physically separate the input channels from the monitor/master sub-mix sections, which is the standard design for live sound reinforcement.",
+  },
+  {
+    number: 8,
+    text: "In an MPEG audio encoder, a tone B will be masked by a tone A whenever:",
+    options: [
+      "Both are in the same critical band and B is above the hearing threshold.",
+      "Both are in the same critical band and B is below the masking threshold.",
+      "Both are in different critical bands and B is above the hearing threshold.",
+      "Both are in different critical bands and B is below the hearing threshold.",
+    ],
+    correct: 1,
+    explanation:
+      "Auditory masking occurs when the weaker sound (B) falls below the elevated masking threshold generated by the louder masker tone (A) within that critical band.",
+  },
+  {
+    number: 9,
+    text: "Window switching is used to:",
+    options: [
+      "Adjust pre-masking.",
+      "Adjust post-masking.",
+      "Reduce the audibility of pre-echoes.",
+      "None of the above.",
+    ],
+    correct: 2,
+    explanation:
+      "When transients occur, switching from long transform blocks to sequences of short blocks constrains quantization noise to the brief pre-masking window, eliminating pre-echo.",
+  },
+  {
+    number: 10,
+    text: "Which of the following systems employs a filter bank with three band-pass filters?",
+    options: [
+      "THX.",
+      "ATRAC.",
+      "Dolby AC-3.",
+      "Both THX and Dolby AC-3.",
+    ],
+    correct: 1,
+    explanation:
+      "Sony ATRAC divides the input signal into three subbands (0–5.5 kHz, 5.5–11 kHz, 11–22 kHz) using a 3-band QMF filter bank before applying MDCT.",
+  },
+  {
+    number: 11,
+    text: "A floating-point quantizer with 10+3 bits (10-bit mantissa, 3-bit exponent) has:",
+    options: [
+      "SNR = 102 dB and Dynamic Range = 60 dB.",
+      "SNR = 60 dB and Dynamic Range = 60 dB.",
+      "SNR = 102 dB and Dynamic Range = 42 dB.",
+      "SNR = 60 dB and Dynamic Range = 102 dB.",
+    ],
+    correct: 3,
+    explanation:
+      "SNR depends strictly on the mantissa bits: 10 * 6 dB = 60 dB. The 3-bit exponent allows 8 gain ranges of 6 dB each (7 * 6 = 42 dB extra dynamic range), giving a total Dynamic Range of 60 + 42 = 102 dB.",
+  },
+  {
+    number: 12,
+    text: "The SMR must be ...... than the SNR so that quantization noise is inaudible:",
+    options: [
+      "Greater.",
+      "Lower (Menor).",
+      "Equal.",
+      "SNR and SMR are only compared in masking, not for quantization noise.",
+    ],
+    correct: 1,
+    explanation:
+      "The Noise-to-Mask Ratio is NMR = SMR - SNR. To ensure the quantization noise stays below the masking threshold (NMR < 0 dB), SMR must be lower than SNR.",
+  },
+  {
+    number: 13,
+    text: "Audio coding in the frequency domain (transform coding):",
+    options: [
+      "Is always better than time-domain coding.",
+      "Is worse than time-domain coding for percussive transient signals.",
+      "Is better than time-domain coding for percussive signals.",
+      "Is preferable only for low-frequency signals.",
+    ],
+    correct: 1,
+    explanation:
+      "Frequency-domain transform coding spreads quantization noise across the entire block duration in time, creating audible pre-echo before sharp percussive transients.",
+  },
+  {
+    number: 14,
+    text: "A stereophonic phantom image is more stable when working with:",
+    options: [
+      "Low frequencies.",
+      "Mid frequencies.",
+      "High frequencies.",
+      "Stability is independent of frequency.",
+    ],
+    correct: 0,
+    explanation:
+      "At low frequencies (<1.5 kHz), wavelengths are larger than the head diameter, producing clean, stable phase/ITD wavefronts that avoid destructive comb filtering.",
+  },
+  {
+    number: 15,
+    text: "In reverberant acoustic conditions, spatial sound localization is possible thanks to:",
+    options: [
+      "The phantom image.",
+      "The Haas effect (Precedence effect).",
+      "The Doppler effect.",
+      "Both phantom image and Haas effect.",
+    ],
+    correct: 1,
+    explanation:
+      "The Haas effect suppresses the directional perception of wall reflections arriving within 5 to 40 ms after the direct sound, allowing localization by the direct wavefront.",
+  },
+  {
+    number: 16,
+    text: "How many audio channels does Dolby Surround Pro Logic decode?",
+    options: [
+      "3 channels.",
+      "4 channels.",
+      "5 channels.",
+      "5.1 channels.",
+    ],
+    correct: 1,
+    explanation:
+      "Dolby Surround Pro Logic decodes 4 channels: Left, Center, Right, and a mono band-limited Surround channel (from a 2-channel matrixed Lt/Rt signal).",
+  },
+  {
+    number: 17,
+    text: "Which country pioneered and promotes the 22.2 multichannel sound system?",
+    options: [
+      "Spain.",
+      "USA.",
+      "Korea.",
+      "Japan.",
+    ],
+    correct: 3,
+    explanation:
+      "The 22.2 multichannel sound format was developed in Japan by NHK for Super Hi-Vision / 8K broadcasting.",
+  },
+  {
+    number: 18,
+    text: "How many loudspeakers will a single sound source activate in a 2D VBAP setup with 50 loudspeakers?",
+    options: [
+      "2 loudspeakers.",
+      "3 loudspeakers.",
+      "50 loudspeakers.",
+      "Depends on position, but a minimum of 3.",
+    ],
+    correct: 0,
+    explanation:
+      "In 2D VBAP, a virtual sound source is placed between the two closest adjacent loudspeakers forming an active pair.",
+  },
+  {
+    number: 19,
+    text: "The 'Inside the Head Effect' (in-head acoustic localization) occurs in:",
+    options: [
+      "Stereophonic speaker systems.",
+      "Binaural systems using headphones.",
+      "Transaural systems.",
+      "THX cinema systems.",
+    ],
+    correct: 1,
+    explanation:
+      "Listening to binaural audio over regular headphones without individualized HRTF filtering or head tracking often causes the sound stage to localize inside the listener's head.",
+  },
+  {
+    number: 20,
+    text: "How many loudspeakers will be driven by a single sound source in a Wave Field Synthesis (WFS) system with 50 loudspeakers?",
+    options: [
+      "2 loudspeakers.",
+      "3 loudspeakers.",
+      "50 loudspeakers.",
+      "Depends on position and array geometry, but at most 50.",
+    ],
+    correct: 3,
+    explanation:
+      "WFS drives an array of loudspeakers simultaneously to reconstruct the curvature of the physical wavefront; depending on source position, all or a subset (up to 50) are driven.",
+  },
+];
+
+const topics345Extended: Question[] = [
+  {
+    number: 1,
+    text: "A stereophonic phantom image is more stable when working with:",
+    options: [
+      "Low frequencies.",
+      "Mid frequencies.",
+      "High frequencies.",
+      "Stability is independent of frequency.",
+    ],
+    correct: 0,
+    explanation:
+      "Low frequencies (<1.5 kHz) provide smooth, stable phase and ITD cues without head shadow acoustic diffraction issues.",
+  },
+  {
+    number: 2,
+    text: "In reverberant conditions, spatial sound localization is possible thanks to:",
+    options: [
+      "The phantom image.",
+      "The Haas effect (Precedence effect).",
+      "The Doppler effect.",
+      "Both phantom image and Haas effect.",
+    ],
+    correct: 1,
+    explanation:
+      "The Haas precedence effect suppresses the directional cues of room reflections arriving within ~5–40 ms.",
+  },
+  {
+    number: 3,
+    text: "How many audio channels does Dolby Surround Pro Logic decode?",
+    options: [
+      "3 channels.",
+      "4 channels.",
+      "5 channels.",
+      "5.1 channels.",
+    ],
+    correct: 1,
+    explanation:
+      "Dolby Surround Pro Logic uses 4 channels: Left, Center, Right, and mono Surround.",
+  },
+  {
+    number: 4,
+    text: "Which country promotes the 22.2 multichannel sound system?",
+    options: [
+      "Spain.",
+      "USA.",
+      "Korea.",
+      "Japan.",
+    ],
+    correct: 3,
+    explanation:
+      "Japan's NHK developed the 22.2 system for Super Hi-Vision.",
+  },
+  {
+    number: 5,
+    text: "The 'Inside the Head Effect' occurs in:",
+    options: [
+      "Stereophonic systems.",
+      "Binaural systems using headphones.",
+      "Transaural systems.",
+      "THX.",
+    ],
+    correct: 1,
+    explanation:
+      "Headphone listening without individual HRTF compensation results in localization collapsed inside the skull.",
+  },
+  {
+    number: 6,
+    text: "How many loudspeakers will be driven by a sound source in WFS with 50 loudspeakers?",
+    options: [
+      "2 loudspeakers.",
+      "3 loudspeakers.",
+      "50 loudspeakers.",
+      "Depends on source position and array geometry, but at most 50.",
+    ],
+    correct: 3,
+    explanation:
+      "WFS drives speaker arrays dynamically to synthesize the physical wavefront (up to all 50 speakers).",
+  },
+  {
+    number: 7,
+    text: "If a block has 512 samples, the double buffering technique introduces a latency of:",
+    options: [
+      "512 samples.",
+      "1024 samples.",
+      "Either of the two, depending on processor load.",
+      "Does not introduce latency.",
+    ],
+    correct: 0,
+    explanation:
+      "Double buffering delays the signal by exactly 1 buffer length (512 samples) while the buffer is being filled.",
+  },
+  {
+    number: 8,
+    text: "Which filters typically have fixed central and cutoff frequencies?",
+    options: [
+      "Loudness.",
+      "Shelving filters.",
+      "Semi-parametric.",
+      "Parametric.",
+    ],
+    correct: 1,
+    explanation:
+      "Simple shelving equalizers (like standard treble and bass controls) have fixed corner/cutoff frequencies and fixed slope.",
+  },
+  {
+    number: 9,
+    text: "Which frequency control provides greater amplification as the listening volume decreases?",
+    options: [
+      "Loudness.",
+      "Tone control.",
+      "Bass / Treble.",
+      "De-esser.",
+    ],
+    correct: 0,
+    explanation:
+      "A Loudness control boosts bass (and treble) at low listening volumes to compensate for the ear's reduced sensitivity at low levels.",
+  },
+  {
+    number: 10,
+    text: "If a 1 kHz tone at 70 dB level produces an SMR of 14 dB, how many bits should be used to quantize the critical band containing the tone?",
+    options: [
+      "2 bits.",
+      "3 bits.",
+      "9 bits.",
+      "10 bits.",
+    ],
+    correct: 1,
+    explanation:
+      "We need SNR > SMR (approx 6.02 * N > 14 dB). For N = 3 bits: 3 * 6 = 18 dB > 14 dB. Thus, 3 bits are sufficient.",
+  },
+  {
+    number: 11,
+    text: "Using the same average bit rate, which provides higher audio quality, CBR or VBR?",
+    options: [
+      "VBR (Variable Bit Rate).",
+      "CBR (Constant Bit Rate).",
+      "Both provide the same quality.",
+      "Depends on the song.",
+    ],
+    correct: 0,
+    explanation:
+      "VBR distributes bits adaptively, allocating more bits to complex passages and fewer bits to simple ones, providing higher overall quality.",
+  },
+  {
+    number: 12,
+    text: "When emitting sound simultaneously from multiple coherent sources, what appears?",
+    options: [
+      "High-frequency aliasing.",
+      "Crosstalk.",
+      "A phantom image.",
+      "None of the above.",
+    ],
+    correct: 2,
+    explanation:
+      "Coherent acoustic sources sum constructively and destructively, producing a virtual 'phantom' sound source perceived between the physical speakers.",
+  },
+  {
+    number: 13,
+    text: "Once all auditory tools (ITD, ILD, HRTF) have been used, what final option helps resolve confused front-back localization?",
+    options: [
+      "Head tracking.",
+      "Applying the tangent law.",
+      "Moving the head.",
+      "The onset.",
+    ],
+    correct: 2,
+    explanation:
+      "Dynamic head rotation breaks the symmetry of the cone of confusion, immediately resolving front vs. back ambiguities.",
+  },
+  {
+    number: 14,
+    text: "The difference in level between the masking signal and the minimum masking threshold within a critical band is called:",
+    options: [
+      "Signal-to-Mask Ratio (SMR).",
+      "Signal-to-Noise Ratio (SNR).",
+      "Noise-to-Mask Ratio (NMR).",
+      "None of the above.",
+    ],
+    correct: 0,
+    explanation:
+      "SMR (Signal-to-Mask Ratio) is the difference in dB between the peak signal power and the masking threshold in that subband.",
+  },
+  {
+    number: 15,
+    text: "The optimal Wiener filter requires knowledge of:",
+    options: [
+      "The PSD of the contaminated signal.",
+      "The PSD of the noise.",
+      "The PSD of the contaminated signal and the clean signal.",
+      "None of the above.",
+    ],
+    correct: 2,
+    explanation:
+      "The theoretical Wiener filter transfer function is H(f) = P_x(f) / P_c(f) = P_x(f) / [P_x(f) + P_n(f)], requiring the PSD of the clean signal and contaminated signal.",
+  },
+  {
+    number: 16,
+    text: "To achieve an accompanying vocal (doubling / chorus) effect, what delay time should be used?",
+    options: [
+      "1 ms.",
+      "Less than 10 ms.",
+      "Between 10 and 25 ms.",
+      "More than 25 ms.",
+    ],
+    correct: 2,
+    explanation:
+      "Delays between 10 and 25 ms create doubling / chorus effects (voz acompañante). Below 10 ms creates flanging/comb filtering; above 25 ms creates distinct slapback echo.",
+  },
+  {
+    number: 17,
+    text: "Pre-echo artifacts in transform coding:",
+    options: [
+      "Are caused by window switching.",
+      "Are caused by auditory masking.",
+      "Are quantization noise spread over time in percussive transient signals.",
+      "None of the above.",
+    ],
+    correct: 2,
+    explanation:
+      "When a sharp percussive transient occurs, quantization noise is spread across the entire analysis window, becoming audible prior to the transient attack.",
+  },
+  {
+    number: 18,
+    text: "Joint-Stereo format in the MPEG-1 audio standard:",
+    options: [
+      "Can be used in all three layers (Layer I, II, and III).",
+      "Can be used only in Layers 1 and 2.",
+      "Can be used only in Layer 3.",
+      "None of the above.",
+    ],
+    correct: 0,
+    explanation:
+      "Joint-Stereo is supported in all three MPEG-1 layers (Intensity Stereo in Layers I, II, III; Mid/Side Stereo also supported in Layer III).",
+  },
+  {
+    number: 19,
+    text: "Window switching in the MPEG-1 standard:",
+    options: [
+      "Can be used by all three layers.",
+      "Can be used only in Layers 1 and 2.",
+      "Can be used only in Layer 3 (MP3).",
+      "None of the above.",
+    ],
+    correct: 2,
+    explanation:
+      "Window switching (switching between long and short MDCT windows) was introduced specifically in MPEG-1 Layer III (MP3). Layers I and II use fixed filter banks.",
+  },
+  {
+    number: 20,
+    text: "The phenomenon where a weak sound is not perceived because a louder sound occurs AFTER it is called:",
+    options: [
+      "Auditory masking.",
+      "Pre-echoes.",
+      "Pre-masking (backward masking).",
+      "None of the above.",
+    ],
+    correct: 2,
+    explanation:
+      "Pre-masking (backward masking) occurs when a louder sound masks a preceding softer sound that occurred 5 to 20 ms earlier.",
+  },
+  {
+    number: 21,
+    text: "Window switching is used to minimize the distortion caused by:",
+    options: [
+      "Percussive signals (transients).",
+      "Auditory pre-masking.",
+      "SMR.",
+      "None of the above.",
+    ],
+    correct: 0,
+    explanation:
+      "Window switching detects percussive transient attacks and switches to short analysis windows to prevent pre-echo artifacts.",
+  },
+  {
+    number: 22,
+    text: "How many samples must we advance when finishing a block with OVERLAP-SAVE? (M = block size, N = filter length, M > N):",
+    options: [
+      "M + N - 1.",
+      "M.",
+      "N.",
+      "None of the above (correct is M - N + 1).",
+    ],
+    correct: 3,
+    explanation:
+      "In Overlap-Save, each block produces L = M - N + 1 valid linear convolution samples. Therefore, the input pointer advances by M - N + 1 samples.",
+  },
+  {
+    number: 23,
+    text: "How many correct samples are obtained per block using the OVERLAP-SAVE method? (M = block size, N = filter length, M > N):",
+    options: [
+      "M.",
+      "N.",
+      "M + N - 1.",
+      "M - N + 1.",
+    ],
+    correct: 3,
+    explanation:
+      "Due to circular convolution aliasing in the first N - 1 samples, exactly M - (N - 1) = M - N + 1 alias-free samples are recovered per block.",
+  },
+  {
+    number: 24,
+    text: "How many samples must we advance when finishing a block with OVERLAP-ADD? (M = block size, N = filter length, M > N):",
+    options: [
+      "M + N - 1.",
+      "M.",
+      "N.",
+      "None of the above.",
+    ],
+    correct: 1,
+    explanation:
+      "In Overlap-Add, input blocks of M samples are zero-padded to M + N - 1. We advance through the input stream by M samples each step.",
+  },
+  {
+    number: 25,
+    text: "A flanger effect is produced with:",
+    options: [
+      "A variable (modulated) delay.",
+      "A variable chorus.",
+      "A variable reverb.",
+      "None of the above.",
+    ],
+    correct: 0,
+    explanation:
+      "A flanger mixes the original audio with a time-varying short delay (<15 ms) modulated by an LFO, creating sweeping comb filter notches.",
+  },
+  {
+    number: 26,
+    text: "In the THX system:",
+    options: [
+      "The decoder implements a mono/stereo downmix.",
+      "Up to 5.1 channels are permitted.",
+      "It uses ATRAC as its compression core.",
+      "None of the above.",
+    ],
+    correct: 3,
+    explanation:
+      "THX is NOT a codec or audio format; it is a quality certification program specifying acoustic parameters, room design, and playback performance.",
+  },
+  {
+    number: 27,
+    text: "The physical separation between adjacent loudspeakers in Wave Field Synthesis causes:",
+    options: [
+      "Emission of cylindrical instead of spherical waves.",
+      "Boundary diffraction.",
+      "Spatial aliasing above a certain cutoff frequency.",
+      "None of the above.",
+    ],
+    correct: 2,
+    explanation:
+      "Spatial sampling of the wavefront with discrete loudspeakers spaced by Delta x causes spatial aliasing above the frequency f_alias = c / (2 * Delta x).",
+  },
+  {
+    number: 28,
+    text: "How many audio channels does 1st-order 3D Ambisonics (B-format) require?",
+    options: [
+      "1 channel.",
+      "2 channels.",
+      "4 channels.",
+      "9 channels.",
+    ],
+    correct: 2,
+    explanation:
+      "1st-order 3D Ambisonics uses 4 channels: W (omnidirectional pressure), X (front-back figure-8), Y (left-right figure-8), and Z (up-down figure-8). Formula: (N + 1)^2 = (1 + 1)^2 = 4.",
+  },
+  {
+    number: 29,
+    text: "Which of the following spatial audio systems requires a cross-talk canceller?",
+    options: [
+      "Transaural systems.",
+      "Wavefield Synthesis.",
+      "Ambisonics HOA.",
+      "Binaural systems.",
+    ],
+    correct: 0,
+    explanation:
+      "Transaural audio reproduces binaural 3D audio over stereo loudspeakers, which requires cross-talk cancellation so the left speaker signal does not reach the right ear and vice versa.",
+  },
+  {
+    number: 30,
+    text: "Beyond what is stated in duplex theory, how does a binaural system improve localization accuracy and elevation?",
+    options: [
+      "Using spherical harmonics.",
+      "Employing HRTFs (Head-Related Transfer Functions).",
+      "Using a head tracking system.",
+      "None of the above.",
+    ],
+    correct: 1,
+    explanation:
+      "HRTFs capture the spectral pinna, head, and torso filtering cues that resolve the cone of confusion, elevation, and front-back localization.",
+  },
+  {
+    number: 31,
+    text: "In Dolby Surround Pro Logic:",
+    options: [
+      "There are 5.1 channels.",
+      "There is an LFE channel.",
+      "Digital technology is used.",
+      "The surround channel is mono.",
+    ],
+    correct: 3,
+    explanation:
+      "Dolby Surround Pro Logic is an analog matrix decoding system where the surround channel is band-limited (100 Hz–7 kHz) mono sent to two rear speakers.",
+  },
+  {
+    number: 32,
+    text: "In which layers of MPEG-1 audio coding can the Mono/Stereo mode be used?",
+    options: [
+      "In all layers (Layer I, II, and III).",
+      "From Layer 2 onwards.",
+      "Only in Layer 3.",
+      "That mode does not exist.",
+    ],
+    correct: 0,
+    explanation:
+      "All MPEG-1 audio layers (Layer I, Layer II, and Layer III) support Mono, Dual-Channel, Stereo, and Joint-Stereo channel configurations.",
+  },
+  {
+    number: 33,
+    text: "A 5.0 surround sound system is also standardized and known as:",
+    options: [
+      "Dolby Surround Prologic.",
+      "3/2 System.",
+      "HRTF.",
+      "None of the above.",
+    ],
+    correct: 1,
+    explanation:
+      "Under ITU-R BS.775, 5.0 configuration is designated as 3/2 (3 front channels: L, C, R / 2 surround channels: Ls, Rs).",
+  },
+  {
+    number: 34,
+    text: "The optical film format Dolby Stereo uses:",
+    options: [
+      "5.1 channels.",
+      "5 channels.",
+      "4 channels.",
+      "None of the above.",
+    ],
+    correct: 2,
+    explanation:
+      "Dolby Stereo on 35mm optical film encodes 4 audio channels (Left, Center, Right, Surround) into two bilateral optical sound tracks using MP matrix encoding.",
+  },
+];
+
 export const exams: Exam[] = [
+  // --- UPCOMING EXAM: TOPICS 3, 4 & 5 ---
+  {
+    id: "topics-345-model-1",
+    title: "Test A, Topics 3, 4 & 5 – Model 1",
+    subtitle: "20 questions (Processing, Compression, 3D Sound)",
+    questions: topics345Model1,
+  },
+  {
+    id: "topics-345-model-2",
+    title: "Test A, Topics 3, 4 & 5 – Model 2",
+    subtitle: "20 questions (Processing, Compression, 3D Sound)",
+    questions: topics345Model2,
+  },
+  {
+    id: "topics-345-extended",
+    title: "Test A, Topics 3, 4 & 5 – Extended Exam",
+    subtitle: "34 questions (Comprehensive Review)",
+    questions: topics345Extended,
+  },
+  // --- PREVIOUS EXAMS: TOPICS 1 & 2 ---
   {
     id: "final-2004",
     title: "Final Exam – 31 January 2004",
     subtitle: "Part 1 – Multiple-choice test (questions 1–16)",
-    rules:
-      "Original rules: one valid answer per question; correct = +0.125 points; wrong = −1/3 of a correct answer.",
     questions: final2004,
   },
   {
@@ -1034,9 +2029,10 @@ export const exams: Exam[] = [
     title: "Test A, Topics 1 & 2 – 2014/15",
     subtitle: "20 questions",
     questions: test201415,
-  },  {
+  },
+  {
     id: "sample-test",
-    title: "Sample test",
+    title: "Sample test (Topics 1 & 2)",
     subtitle: "10 questions",
     rules: "Original rules: correct = +1 point; wrong = −0.33 points.",
     questions: sampleTest,
@@ -1048,8 +2044,15 @@ export type QuizItem = Question & { examTitle: string };
 export function getQuizItems(examId: string): { title: string; rules?: string; items: QuizItem[] } | null {
   if (examId === "all") {
     return {
-      title: "All questions",
+      title: "All questions (Entire Course)",
       items: exams.flatMap((e) => e.questions.map((q) => ({ ...q, examTitle: e.title }))),
+    };
+  }
+  if (examId === "all-345") {
+    const t345Exams = exams.filter((e) => e.id.startsWith("topics-345"));
+    return {
+      title: "All Questions – Topics 3, 4 & 5",
+      items: t345Exams.flatMap((e) => e.questions.map((q) => ({ ...q, examTitle: e.title }))),
     };
   }
   const exam = exams.find((e) => e.id === examId);
@@ -1062,3 +2065,8 @@ export function getQuizItems(examId: string): { title: string; rules?: string; i
 }
 
 export const totalQuestions = exams.reduce((n, e) => n + e.questions.length, 0);
+export const totalQuestionsTopics345 = [
+  ...topics345Model1,
+  ...topics345Model2,
+  ...topics345Extended,
+].length;

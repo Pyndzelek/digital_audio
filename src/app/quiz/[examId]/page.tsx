@@ -3,7 +3,11 @@ import Quiz from "@/components/Quiz";
 import { exams, getQuizItems } from "@/data/questions";
 
 export function generateStaticParams() {
-  return [...exams.map((e) => ({ examId: e.id })), { examId: "all" }];
+  return [
+    ...exams.map((e) => ({ examId: e.id })),
+    { examId: "all" },
+    { examId: "all-345" },
+  ];
 }
 
 export default async function QuizPage({ params }: { params: Promise<{ examId: string }> }) {
@@ -13,7 +17,12 @@ export default async function QuizPage({ params }: { params: Promise<{ examId: s
 
   return (
     <main className="mx-auto w-full max-w-2xl px-4 py-8">
-      <Quiz title={quiz.title} rules={quiz.rules} items={quiz.items} showExamTitle={examId === "all"} />
+      <Quiz
+        title={quiz.title}
+        rules={quiz.rules}
+        items={quiz.items}
+        showExamTitle={examId === "all" || examId === "all-345"}
+      />
     </main>
   );
 }
